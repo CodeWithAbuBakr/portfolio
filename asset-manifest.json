@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.e07d7230.css",
+    "main.js": "/portfolio/static/js/main.63feb457.js",
+    "static/media/GoogleSheet.png": "/portfolio/static/media/GoogleSheet.234c7523200d6e79141c.png",
+    "static/media/GoogleDoc.png": "/portfolio/static/media/GoogleDoc.d99e946de0664283f3b8.png",
+    "static/media/GmailAddon.png": "/portfolio/static/media/GmailAddon.9881c4aa1bf24a054fc2.png",
+    "static/media/Outlook.png": "/portfolio/static/media/Outlook.bc7d31b0b34fb8a78e0c.png",
+    "static/media/Powerpoint.png": "/portfolio/static/media/Powerpoint.7dd5e2716ddede8f38f6.png",
+    "static/media/Google.png": "/portfolio/static/media/Google.c1b48636b877b6851801.png",
+    "static/media/Word.png": "/portfolio/static/media/Word.b8c0d779c3ad18082bc6.png",
+    "index.html": "/portfolio/index.html",
+    "main.e07d7230.css.map": "/portfolio/static/css/main.e07d7230.css.map",
+    "main.63feb457.js.map": "/portfolio/static/js/main.63feb457.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e07d7230.css",
+    "static/js/main.63feb457.js"
+  ]
+}
