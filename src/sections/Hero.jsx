@@ -45,13 +45,6 @@ const ContentWrapper = styled.div`
   max-width: 600px;
   position: relative;
   z-index: 2;
-  @media (max-width: 768px) {
-      text-align: center;
-    }
-
-    @media (max-width: 480px) {
-      text-align: center;
-    }
 `;
 
 const ProfileWrapper = styled.div`

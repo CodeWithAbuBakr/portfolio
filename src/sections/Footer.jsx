@@ -110,7 +110,6 @@ const NeuralInterfaceContainer = styled.div`
   position: relative;
   z-index: 1;
 `;
-
 const NeuralInterfaceContent = styled(motion.div)`
   display: inline-flex;
   align-items: center;
@@ -120,24 +119,21 @@ const NeuralInterfaceContent = styled(motion.div)`
   border: 1px solid rgba(100, 255, 218, 0.2);
   font-family: 'Space Mono', monospace;
   position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
 
+  /* Medium screens (tablets) */
   @media (max-width: 768px) {
-    padding: 0.2rem 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
   }
 
+  /* Small screens (phones) */
   @media (max-width: 480px) {
-    padding-left: 1rem;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.05), transparent);
-    pointer-events: none;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    width: 95%;
+    margin: 0 auto;
   }
 `;
 
@@ -145,18 +141,70 @@ const BinaryIcon = styled(TbBinary)`
   font-size: 2rem;
   color: #64ffda;
   margin-right: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.7rem;
+    margin-right: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+  }
 `;
 
 const ShieldIcon = styled(RiShieldKeyholeFill)`
   font-size: 2rem;
   color: #00ff88;
   margin-left: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.7rem;
+    margin-left: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
+  }
 `;
 
 const InterfaceText = styled.span`
   color: #2ed5ff;
   font-size: 0.9rem;
   letter-spacing: 2px;
+  white-space: nowrap;
+  
+  /* Medium screens */
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+  
+  /* Small screens */
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    white-space: normal;
+    text-align: center;
+    display: inline-block;
+    line-height: 1.3;
+  }
+
+  /* Hide separator on smallest screens */
+  @media (max-width: 360px) {
+    &::before {
+      content: "NEURAL INTERFACE v2.1.5";
+      display: block;
+    }
+    &::after {
+      content: "QUANTUM ENCRYPTION ACTIVE";
+      display: block;
+    }
+    span {
+      display: none;
+    }
+  }
 `;
 
 // Updated Footer component
