@@ -16,6 +16,14 @@ const HeroWrapper = styled.section`
   background: transparent;
   overflow: hidden;
 
+  @media (max-width: 768px) {
+    padding-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding-bottom: 2rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -44,6 +52,21 @@ const ProfileWrapper = styled.div`
   border-radius: 50%;
   z-index: 2;
 
+  @media (max-width: 992px) {
+    flex: 0 0 330px;
+    height: 330px;
+  }
+
+  @media (max-width: 768px) {
+    flex: 0 0 330px;
+    height: 330px;
+  }
+
+  @media (max-width: 480px) {
+    flex: 0 0 250px;
+    height: 250px;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -57,6 +80,13 @@ const ProfileWrapper = styled.div`
       0 0 40px rgba(0, 212, 255, 0.2),
       inset 0 0 30px rgba(0, 212, 255, 0.1);
     animation: rotate 20s linear infinite;
+
+    @media (max-width: 480px) {
+      top: -3%;
+      left: -3%;
+      width: 106%;
+      height: 106%;
+    }
   }
 
   @keyframes rotate {
