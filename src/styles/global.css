@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0f;
+  color: white;
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
+}
+
+@keyframes cyber-glow {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  100% { filter: hue-rotate(360deg) brightness(1.2); }
+}
+
+@keyframes matrix-fall {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1 }
+  50% { opacity: 0 }
+}
