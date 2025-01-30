@@ -2,10 +2,6 @@
 import styled from 'styled-components';
 import CyberButton from '../components/CyberButton';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaPython, FaAws } from 'react-icons/fa';
-import { SiMongodb, SiExpress, SiTensorflow } from 'react-icons/si';
-import { TbBrandMysql, TbBrandOpenai } from "react-icons/tb";
-import { VscAzure } from "react-icons/vsc";
 
 const HeroWrapper = styled.section`
   padding: 8rem 2rem 0rem;
@@ -85,39 +81,6 @@ const ProfileImage = styled.img`
   filter: grayscale(20%);
 `;
 
-const TechIconsRing = styled.div`
-  position: absolute;
-  top: -5%;
-  left: -5%;
-  width: 110%;
-  height: 110%;
-  animation: rotate 30s linear infinite reverse;
-`;
-
-const TechIcon = styled.div.attrs(props => ({
-  style: {
-    transform: `rotate(${props.$angle}deg) translate(160px) rotate(-${props.$angle}deg)`,
-  },
-}))`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: rgba(0, 212, 255, 0.8);
-  font-size: 1.8rem;
-  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
-  transition: all 0.3s ease;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    transform: ${props => 
-      `rotate(${props.$angle}deg) translate(160px) rotate(-${props.$angle}deg) scale(1.5)`};
-    color: #00ff88;
-  }
-`;
 
 const AiGlow = styled.div`
   position: absolute;
@@ -152,19 +115,6 @@ const IntroText = styled(motion.div)`
 `;
 
 export default function Hero() {
-  const techIcons = [
-    { Icon: FaReact, angle: 0 },
-    { Icon: TbBrandOpenai, angle: 36 },
-    { Icon: SiTensorflow, angle: 72 },
-    { Icon: FaPython, angle: 108 },
-    { Icon: FaAws, angle: 144 },
-    { Icon: VscAzure, angle: 180 },
-    { Icon: SiMongodb, angle: 216 },
-    { Icon: FaNodeJs, angle: 252 },
-    { Icon: SiExpress, angle: 288 },
-    { Icon: TbBrandMysql, angle: 324 },
-  ];
-
   return (
     <HeroWrapper id='home'>
       <ContentWrapper>
@@ -199,13 +149,6 @@ export default function Hero() {
             alt="AI Office Add-in Developer"
           />
         </ImageContainer>
-        <TechIconsRing>
-          {techIcons.map(({ Icon, angle }, index) => (
-            <TechIcon key={index} $angle={angle}>
-              {/* <Icon /> */}
-            </TechIcon>
-          ))}
-        </TechIconsRing>
       </ProfileWrapper>
     </HeroWrapper>
   );

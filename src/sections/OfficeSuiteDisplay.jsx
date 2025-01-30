@@ -4,7 +4,10 @@ import ExcelLogo from './imgs/Excel.png';
 import WordLogo from './imgs/Word.png';
 import PowerPointLogo from './imgs/Powerpoint.png';
 import OutlookLogo from './imgs/Outlook.png';
-import GoogleLogo from './imgs/Google.png'
+import GoogleLogo from './imgs/Google.png';
+import GoogleDocLogo from './imgs/GoogleDoc.png';
+import GoogleSheetsLogo from './imgs/GoogleSheet.png';
+import GmailAddon from './imgs/GmailAddon.png';
 
 const neuralPulse = keyframes`
   0% { opacity: 0.2; }
@@ -208,9 +211,19 @@ const Header = styled(motion.h2)`
 const OfficeSuiteDisplay = () => {
   const apps = [
     {
+      logo: OutlookLogo,
+      title: "OUTLOOK ADD-IN",
+      color: "#7d6cff",
+      nodes: [
+        { x: '10%', y: '50%' },
+        { x: '90%', y: '50%' },
+        { x: '45%', y: '10%' }
+      ]
+    },
+    {
       logo: ExcelLogo,
       title: "EXCEL ADD-IN",
-      color: "#4dc3ff",
+      color: "#26ffdf",
       nodes: [
         { x: '10%', y: '20%' },
         { x: '90%', y: '70%' },
@@ -220,7 +233,7 @@ const OfficeSuiteDisplay = () => {
     {
       logo: WordLogo,
       title: "WORD ADD-IN",
-      color: "#26ffdf",
+      color: "#4dc3ff",
       nodes: [
         { x: '15%', y: '75%' },
         { x: '85%', y: '25%' },
@@ -230,7 +243,7 @@ const OfficeSuiteDisplay = () => {
     {
       logo: PowerPointLogo,
       title: "POWERPOINT ADD-IN",
-      color: "#7d6cff",
+      color: "#ff64cb",
       nodes: [
         { x: '20%', y: '40%' },
         { x: '80%', y: '60%' },
@@ -238,9 +251,19 @@ const OfficeSuiteDisplay = () => {
       ]
     },
     {
-      logo: OutlookLogo,
-      title: "OUTLOOK ADD-IN",
-      color: "#ff64cb",
+      logo: GoogleLogo,
+      title: "GOOGLE ADD-ONS",
+      color: "#4dc3ff",
+      nodes: [
+        { x: '20%', y: '40%' },
+        { x: '80%', y: '60%' },
+        { x: '65%', y: '15%' }
+      ]
+    },
+    {
+      logo: GoogleSheetsLogo,
+      title: "GOOGLE SHEETS ADD-ON",
+      color: "#26ffdf",
       nodes: [
         { x: '10%', y: '50%' },
         { x: '90%', y: '50%' },
@@ -248,18 +271,18 @@ const OfficeSuiteDisplay = () => {
       ]
     },
     {
-      logo: GoogleLogo,
-      title: "GOOGLE ADD-ONS",
+      logo: GoogleDocLogo,
+      title: "GOOGLE DOCS ADD-ON",
       color: "#7d6cff",
       nodes: [
-        { x: '20%', y: '40%' },
-        { x: '80%', y: '60%' },
-        { x: '65%', y: '15%' }
+        { x: '10%', y: '50%' },
+        { x: '90%', y: '50%' },
+        { x: '45%', y: '10%' }
       ]
     },
     {
-      logo: OutlookLogo,
-      title: "COMMUNICATION AGENT",
+      logo: GmailAddon,
+      title: "GMAIL ADD-ON",
       color: "#ff64cb",
       nodes: [
         { x: '10%', y: '50%' },
