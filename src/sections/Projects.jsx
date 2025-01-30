@@ -61,7 +61,7 @@ const StyledCyberCard = styled(CyberCard)`
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 40px ${({ glowcolor }) => glowcolor}80;
+    box-shadow: 0 0 40px ${({ $glowColor }) => $glowColor}80;
   }
 
   &::before {
@@ -73,9 +73,9 @@ const StyledCyberCard = styled(CyberCard)`
     height: 100%;
     background: linear-gradient(
       45deg,
-      ${({ glowcolor }) => glowcolor} 0%,
+      ${({ $glowColor }) => $glowColor} 0%, // Fixed
       transparent 50%,
-      ${({ glowcolor }) => glowcolor} 100%
+      ${({ $glowColor }) => $glowColor} 100% // Fixed
     );
     opacity: 0.1;
     transition: opacity 0.3s ease;
@@ -88,7 +88,7 @@ const StyledCyberCard = styled(CyberCard)`
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1rem;
-    border: 1px solid ${({ glowcolor }) => glowcolor}30;
+    border: 1px solid ${({ $glowColor }) => $glowColor}30; // Fixed
     transition: transform 0.3s ease;
     flex-shrink: 0;
     
@@ -100,7 +100,7 @@ const StyledCyberCard = styled(CyberCard)`
   h3 {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
-    color: ${({ glowcolor }) => glowcolor};
+    color: ${({ $glowColor }) => $glowColor}; // Fixed
     font-family: 'Space Mono', monospace;
     flex-shrink: 0;
     
@@ -151,36 +151,42 @@ const StyledCyberCard = styled(CyberCard)`
 
 const projects = [
   {
+    id: 1,
     title: 'Neural Excel Optimizer',
     description: 'Deep learning-powered spreadsheet analysis with predictive modeling and automated insights generation using TensorFlow integration...',
     imgLink: '/ai-excel.jpg',
     glowColor: '#2ed5ff'
   },
   {
+    id: 2,
     title: 'Cognitive Doc Security',
     description: 'AI-driven document management system with natural language processing and blockchain-based authentication using custom transformer models...',
     imgLink: '/ai-docs.jpg',
     glowColor: '#64ffda'
   },
   {
+    id: 3,
     title: 'Smart Presentation AI',
     description: 'Generative AI assistant for automated slide creation with style transfer capabilities and real-time content suggestions powered by GPT-4...',
     imgLink: '/ai-slides.jpg',
     glowColor: '#00ff88'
   },
   {
+    id: 4,
     title: 'Neural Excel Optimizer',
     description: 'Deep learning-powered spreadsheet analysis with predictive modeling and automated insights generation using TensorFlow integration...',
     imgLink: '/ai-excel.jpg',
     glowColor: '#ffd700'
   },
   {
+    id: 5,
     title: 'Cognitive Doc Security',
     description: 'AI-driven document management system with natural language processing and blockchain-based authentication using custom transformer models...',
     imgLink: '/ai-docs.jpg',
     glowColor: '#ff7d45'
   },
   {
+    id: 6,
     title: 'Smart Presentation AI',
     description: 'Generative AI assistant for automated slide creation with style transfer capabilities and real-time content suggestions powered by GPT-4...',
     imgLink: '/ai-slides.jpg',
@@ -198,6 +204,14 @@ const Header = styled(motion.h2)`
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
+
+  @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+    }
   
   &::after {
     position: absolute;
@@ -244,7 +258,7 @@ export default function Projects() {
       <Grid>
         {projects.map((project, index) => (
           <CardContainer
-            key={project.title}
+            key={project.id}
             transition={{ delay: index * 0.15, duration: 0.6 }}
             onClick={() => handleCardClick(index)}
             layout
@@ -264,9 +278,9 @@ export default function Projects() {
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <div>
-                <span>TensorFlow</span>
-                <span>GPT-4</span>
-                <span>Blockchain</span>
+                <span key="tensorflow">TensorFlow</span>
+                <span key="gpt4">GPT-4</span>
+                <span key="blockchain">Blockchain</span>
               </div>
             </StyledCyberCard>
           </CardContainer>

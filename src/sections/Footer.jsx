@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaStackOverflow } from "react-icons/fa";
-import { RiSignalWifiFill, RiShieldKeyholeFill, RiCpuLine } from "react-icons/ri";
+import { RiShieldKeyholeFill } from "react-icons/ri";
 import { FaUpwork } from "react-icons/fa6";
 import { TbBrandFiverr, TbBinary } from "react-icons/tb";
 
@@ -48,7 +48,7 @@ const SocialGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem 2rem;
   max-width: 1200px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2rem;
   padding: 0 2rem;
   position: relative;
 `;
@@ -106,7 +106,7 @@ const NeuralPattern = styled.div`
 
 const NeuralInterfaceContainer = styled.div`
   text-align: center;
-  margin: 2rem auto;
+  padding: 0rem 2rem;
   position: relative;
   z-index: 1;
 `;
@@ -120,6 +120,14 @@ const NeuralInterfaceContent = styled(motion.div)`
   border: 1px solid rgba(100, 255, 218, 0.2);
   font-family: 'Space Mono', monospace;
   position: relative;
+
+  @media (max-width: 768px) {
+    padding: 0.2rem 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding-left: 1rem;
+  }
 
   &::before {
     content: '';

@@ -111,6 +111,14 @@ const Header = styled(motion.h2)`
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
+
+  @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+    }
   
   &::after {
     position: absolute;
@@ -222,13 +230,6 @@ export default function Contact() {
           <CyberButton glowColor="#00ff88">SEND MESSAGE</CyberButton>
         </motion.div>
       </Form>
-
-      <style jsx global>{`
-        @keyframes scan {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-      `}</style>
     </motion.section>
   );
 }

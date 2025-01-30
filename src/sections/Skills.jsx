@@ -102,6 +102,14 @@ const Header = styled(motion.h2)`
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
+
+  @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+    }
   
   &::after {
     position: absolute;

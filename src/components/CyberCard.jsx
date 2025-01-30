@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const CardWrapper = styled(motion.div)`
   background: rgba(10, 15, 30, 0.9);
-  border: 2px solid ${({ glowColor }) => glowColor};
+  border: 2px solid ${({ $glowColor }) => $glowColor};
   border-radius: 8px;
   padding: 2rem;
   position: relative;
@@ -21,7 +21,7 @@ export const CardWrapper = styled(motion.div)`
     right: -2px;
     bottom: -2px;
     background: linear-gradient(45deg, 
-      ${({ glowColor }) => glowColor}, 
+      ${({ $glowColor }) => $glowColor}, 
       transparent 50%);
     z-index: -1;
     opacity: 0.3;
@@ -30,7 +30,7 @@ export const CardWrapper = styled(motion.div)`
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 40px ${({ glowColor }) => `${glowColor}33`};
+    box-shadow: 0 0 40px ${({ $glowColor }) => `${$glowColor}33`};
     
     &::before {
       opacity: 0.6;
@@ -39,10 +39,10 @@ export const CardWrapper = styled(motion.div)`
 `;
 
 const Title = styled.h3`
-  color: ${({ glowColor }) => glowColor};
+  color: ${({ $glowColor }) => $glowColor};
   font-family: 'Orbitron', sans-serif;
   margin-bottom: 1.5rem;
-  text-shadow: 0 0 15px ${({ glowColor }) => `${glowColor}80`};
+  text-shadow: 0 0 15px ${({ $glowColor }) => `${$glowColor}80`};
 `;
 
 const Description = styled.p`
@@ -77,26 +77,27 @@ const TechTag = styled.span`
 `;
 
 export default function CyberCard({ title, glowColor, children }) {
-    // Safely access children content
-    const content = React.Children.toArray(children);
-    const description = content.find(child => child.type === 'p');
-    const techItems = content.find(child => child.type === 'div');
-  
-    return (
-      <CardWrapper 
-        glowColor={glowColor}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
-        <Title glowColor={glowColor}>{title}</Title>
-        {description && <Description>{description.props.children}</Description>}
-        {techItems && (
-          <TechStack>
-            {React.Children.map(techItems.props.children, tech => (
-              <TechTag key={tech.key}>{tech.props.children}</TechTag>
-            ))}
-          </TechStack>
-        )}
-      </CardWrapper>
-    );
-  }
+  const content = React.Children.toArray(children);
+  const description = content.find(child => child.type === 'p');
+  const techItems = content.find(child => child.type === 'div');
+
+  return (
+    <CardWrapper 
+      $glowColor={glowColor}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      <Title $glowColor={glowColor}>{title}</Title>
+      {description && <Description>{description.props.children}</Description>}
+      {techItems && (
+        <TechStack>
+          {React.Children.map(techItems.props.children, (tech, index) => (
+            <TechTag key={tech.key || `tech-${index}`}>
+              {tech.props.children}
+            </TechTag>
+          ))}
+        </TechStack>
+      )}
+    </CardWrapper>
+  );
+}

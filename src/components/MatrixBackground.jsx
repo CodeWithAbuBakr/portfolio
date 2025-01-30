@@ -1,4 +1,3 @@
-// components/AIBackground.jsx
 import styled, { keyframes } from 'styled-components';
 import { useEffect, useState } from 'react';
 
@@ -47,9 +46,9 @@ const Particle = styled.div`
 
 export default function AIBackground() {
   const [particles, setParticles] = useState([]);
-  const colors = ['#4dc3ff', '#26ffdf', '#7d6cff'];
-
+  
   useEffect(() => {
+    const colors = ['#4dc3ff', '#26ffdf', '#7d6cff']; // Move inside useEffect
     const createParticles = () => {
       const screenWidth = window.innerWidth;
       const particleCount = Math.floor(screenWidth / 20);
@@ -68,7 +67,7 @@ export default function AIBackground() {
     const handleResize = () => setParticles(createParticles());
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, []); // No need to add `colors` since it's defined inside useEffect
 
   return (
     <Container>

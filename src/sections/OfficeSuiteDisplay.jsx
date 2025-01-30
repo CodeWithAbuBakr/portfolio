@@ -189,6 +189,14 @@ const Header = styled(motion.h2)`
   margin-bottom: 3rem;
   position: relative;
   font-family: 'Orbitron', sans-serif;
+
+  @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+    }
   
   &::after {
     content: '✦';

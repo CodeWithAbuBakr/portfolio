@@ -1,7 +1,6 @@
 // App.js
 import { ThemeProvider } from 'styled-components';
 import { cyberTheme } from './styles/theme';
-import MatrixBackground from './components/MatrixBackground';
 import Hero from './sections/Hero';
 import Projects from './sections/Projects';
 import Skills from './sections/Skills';
