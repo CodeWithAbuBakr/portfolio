@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import CyberButton from '../components/CyberButton';
 import { motion } from 'framer-motion';
+import ProfileImgUrl from './imgs/mabubakrprofilepic.jpeg';
 
 const HeroWrapper = styled.section`
   padding: 8rem 2rem 0rem;
@@ -145,7 +146,7 @@ export default function Hero() {
         <AiGlow />
         <ImageContainer>
           <ProfileImage 
-            src="/mabubakrprofilepic.jpeg"
+            src={ProfileImgUrl}
             alt="AI Office Add-in Developer"
           />
         </ImageContainer>
