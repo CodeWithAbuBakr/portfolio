@@ -1,124 +1,7 @@
-// sections/Skills.jsx
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import SkillMeter from '../components/SkillMeter';
 
-const Section = styled.section`
-  padding: 8rem 1rem 0rem;
-  background: transparent;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: 30px 30px;
-    opacity: 0.5;
-    z-index: 0;
-  }
-`;
-
-const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  margin-top: 4rem;
-  position: relative;
-  z-index: 1;
-  padding: 0 2rem;
-`;
-
-const SkillCategory = styled(motion.div)`
-  padding: 2rem;
-  background: rgba(10, 25, 47, 0.7);
-  border: 1px solid rgba(46, 213, 255, 0.2);
-  border-radius: 12px;
-  backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &:hover {
-    border-color: #2ed5ff;
-    box-shadow: 0 8px 32px rgba(46, 213, 255, 0.15);
-    
-    &::after {
-      opacity: 0.2;
-    }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(46, 213, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
-    opacity: 0;
-  }
-`;
-
-const CategoryTitle = styled.h3`
-  color: #ccd6f6;
-  font-family: 'Space Mono', monospace;
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  position: relative;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background: linear-gradient(90deg, #2ed5ff, transparent);
-    transition: width 0.3s ease;
-  }
-
-  span {
-    color: #2ed5ff;
-    margin-right: 0.5rem;
-  }
-`;
-
-const Header = styled(motion.h2)`
-  text-align: center;
-  font-size: 2.5rem;
-  color: #ccd6f6;
-  margin-bottom: 3rem;
-  position: relative;
-  font-family: 'Orbitron', sans-serif;
-  
-  &::after {
-    content: '✦';
-    position: absolute;
-    right: -10px;
-    top: -10px;
-    color: #2ed5ff;
-    font-size: 1.2rem;
-    filter: drop-shadow(0 0 5px #2ed5ff);
-  }
-
-  span {
-    background: linear-gradient(45deg, #2ed5ff, #64ffda);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 15px rgba(46, 213, 255, 0.3);
-  }
-`;
+const colors = ['#2ed5ff', '#64ffda', '#00ff88', '#ffd700', '#ff7d45'];
 
 const skillsData = [
   // {
@@ -169,40 +52,153 @@ const skillsData = [
   }
 ];
 
+const StyledSkillsContainer = styled.div`
+  background: transparent;
+  padding: 8rem 1rem 0rem;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const SkillsGrid = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+`;
+
+const CategoryTitle = styled(motion.h3)`
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, ${colors[0]}, ${colors[1]});
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+`;
+
+const SkillBar = styled(motion.div)`
+  height: 10px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+`;
+
+const SkillItem = styled(motion.div)`
+  position: relative;
+  padding: 0.5rem;
+  &:hover {
+    .glow-effect {
+      opacity: 0.5;
+    }
+  }
+`;
+
+const Header = styled(motion.h2)`
+  text-align: center;
+  font-size: 2rem;
+  color: #ccd6f6;
+  margin-bottom: 2rem;
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  
+  &::after {
+    position: absolute;
+    right: -10px;
+    top: -15px;
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 10px #64ffda);
+  }
+
+  span {
+    background: linear-gradient(45deg, #2ed5ff, #64ffda);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(46, 213, 255, 0.5);
+  }
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+`;
+
 export default function Skills() {
   return (
-    <Section id="skills">
+    <StyledSkillsContainer id='skills'>
       <Header
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <span>Technical Expertise</span>
+        <span>TECHNOLOGIES EXPERTISE</span>
       </Header>
-
-      <SkillsGrid>
-        {skillsData.map((category, index) => (
-          <SkillCategory
-            key={category.category}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.1, duration: 0.4 }}
-            viewport={{ once: true }}
+      {skillsData.map((category, catIdx) => (
+        <motion.div 
+          key={catIdx}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: catIdx * 0.2 }}
+          style={{ marginBottom: '3rem' }}
+        >
+          <CategoryTitle
+            initial={{ backgroundSize: '0% 100%' }}
+            animate={{ backgroundSize: '100% 100%' }}
+            transition={{ duration: 1.5 }}
           >
-            <CategoryTitle>
-              <span>▹</span>{category.category}
-            </CategoryTitle>
-            {category.items.map((item, idx) => (
-              <SkillMeter
-                key={item.skill}
-                skill={item.skill}
-                level={item.level}
-                delay={index * 0.2 + idx * 0.1}
-              />
-            ))}
-          </SkillCategory>
-        ))}
-      </SkillsGrid>
-    </Section>
+            {category.category}
+          </CategoryTitle>
+
+          <SkillsGrid>
+            {category.items.map((item, idx) => {
+              const color = colors[idx % colors.length];
+              return (
+                <SkillItem 
+                  key={idx}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: catIdx * 0.2 + idx * 0.1 }}
+                >
+                  <div className="skill-header">
+                    <span style={{ color: '#fff' }}>{item.skill}</span>
+                    <span style={{ color: color }}>{item.level}%</span>
+                  </div>
+
+                  <SkillBar>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${item.level}%` }}
+                      transition={{ duration: 1, delay: 0.3 }}
+                      style={{
+                        height: '100%',
+                        background: `linear-gradient(90deg, ${color}dd, ${color}40)`,
+                        borderRadius: '5px',
+                        boxShadow: `0 0 8px ${color}80`,
+                      }}
+                    />
+                  </SkillBar>
+
+                  <div 
+                    className="glow-effect"
+                    style={{
+                      position: 'absolute',
+                      right: '-15px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      width: '30px',
+                      height: '30px',
+                      background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
+                      opacity: '0.3',
+                      transition: 'opacity 0.3s ease',
+                    }} 
+                  />
+                </SkillItem>
+              );
+            })}
+          </SkillsGrid>
+        </motion.div>
+      ))}
+    </StyledSkillsContainer>
   );
 }

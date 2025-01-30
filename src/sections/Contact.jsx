@@ -102,6 +102,37 @@ const StatusIndicator = styled.div`
   }
 `;
 
+const Header = styled(motion.h2)`
+  text-align: center;
+  font-size: 2rem;
+  color: #ccd6f6;
+  margin-bottom: 2rem;
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  
+  &::after {
+    position: absolute;
+    right: -10px;
+    top: -15px;
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 10px #64ffda);
+  }
+
+  span {
+    background: linear-gradient(45deg, #2ed5ff, #64ffda);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(46, 213, 255, 0.5);
+  }
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+`;
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -133,22 +164,13 @@ export default function Contact() {
         minHeight: '100vh'
       }}
     >
-      <motion.h1
+      <Header
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        style={{
-          textAlign: 'center',
-          fontSize: '2.5rem',
-          background: 'linear-gradient(45deg, #6a00ff, #00ffaa)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          fontFamily: "'Orbitron', sans-serif",
-          margin: '0 0 2rem'
-        }}
+        transition={{ duration: 0.6 }}
       >
-        CONTACT US
-      </motion.h1>
+        <span>CONTACT US</span>
+      </Header>
 
       <Form
         onSubmit={handleSubmit}
@@ -197,18 +219,7 @@ export default function Contact() {
           transition={{ delay: 0.8 }}
           style={{ textAlign: 'center', marginTop: '1.5rem' }}
         >
-          <CyberButton
-            type="submit"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            style={{
-              background: 'linear-gradient(45deg, #6a00ff, #00b4d8)',
-              padding: '1rem 2rem',
-              fontSize: '1.1rem'
-            }}
-          >
-            Send Message
-          </CyberButton>
+          <CyberButton glowColor="#00ff88">SEND MESSAGE</CyberButton>
         </motion.div>
       </Form>
 

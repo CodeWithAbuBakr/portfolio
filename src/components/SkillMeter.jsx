@@ -3,35 +3,53 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const MeterContainer = styled.div`
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
   position: relative;
+
+  @media (max-width: 768px) {
+    margin: 1rem 0;
+  }
 `;
 
 const SkillLabel = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.75rem;
   font-family: 'Space Mono', monospace;
+  align-items: center;
 `;
 
 const SkillName = styled.span`
-  color: #88f3ff;
-  font-size: 0.9rem;
-  text-shadow: 0 0 8px rgba(136, 243, 255, 0.2);
+  color: ${props => props.$color || '#64ffda'};
+  font-size: 0.95rem;
+  text-shadow: 0 0 10px ${props => `${props.$color}30` || 'rgba(100, 255, 218, 0.3)'};
+  transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const SkillLevel = styled.span`
-  color: #00ff88;
-  font-size: 0.9rem;
+  color: ${props => props.$color || '#00ff88'};
+  font-size: 0.95rem;
+  text-shadow: 0 0 8px ${props => `${props.$color}30` || 'rgba(0, 255, 136, 0.3)'};
+  transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const MeterBar = styled.div`
-  height: 10px;
-  background: rgba(46, 213, 255, 0.05);
-  border-radius: 6px;
+  height: 12px;
+  background: ${props => `${props.$color}15` || 'rgba(70, 70, 70, 0.1)'};
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 0 8px rgba(46, 213, 255, 0.1);
+  box-shadow: 
+    inset 0 0 10px ${props => `${props.$color}20` || 'rgba(255, 125, 69, 0.1)'},
+    0 2px 4px rgba(0, 0, 0, 0.1);
 
   &::before {
     content: '';
@@ -43,23 +61,32 @@ const MeterBar = styled.div`
     background-image: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(46, 213, 255, 0.05) 50%,
+      ${props => `${props.$color}30` || 'rgba(255, 215, 0, 0.1)'} 50%,
       transparent 100%
     );
-    animation: scan 3s linear infinite;
+    animation: scan 2.5s linear infinite;
   }
 
   @keyframes scan {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
   }
+
+  @media (max-width: 768px) {
+    height: 10px;
+  }
 `;
 
 const Progress = styled(motion.div)`
   height: 100%;
-  background: linear-gradient(90deg, #2ed5ff, #00ff88);
+  background: linear-gradient(
+    90deg,
+    ${props => props.$color || '#2ed5ff'},
+    ${props => `${props.$color}cc` || '#00ff88'}
+  );
   position: relative;
   width: ${props => props.$width}%;
+  border-radius: 8px;
 
   &::after {
     content: '';
@@ -67,9 +94,15 @@ const Progress = styled(motion.div)`
     top: 0;
     right: 0;
     bottom: 0;
-    width: 4px;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    width: 3px;
+    background: ${props => `${props.$color}cc` || 'rgba(255, 215, 0, 0.8)'};
+    box-shadow: 0 0 20px ${props => props.$color || 'rgba(255, 215, 0, 0.5)'};
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 6px;
+    box-shadow: 0 0 25px ${props => props.$color || 'rgba(255, 215, 0, 0.8)'};
   }
 `;
 
@@ -79,28 +112,46 @@ const Glow = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(46, 213, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    ${props => `${props.$color}40` || 'rgba(46, 213, 255, 0.2)'},
+    transparent
+  );
   opacity: 0;
 `;
 
-export default function SkillMeter({ skill, level, delay }) {
+export default function SkillMeter({ skill, level, delay, color = '#2ed5ff' }) {
   return (
     <MeterContainer>
       <SkillLabel>
-        <SkillName>{skill}</SkillName>
-        <SkillLevel>{level}%</SkillLevel>
+        <SkillName $color={color}>{skill}</SkillName>
+        <SkillLevel $color={color}>{level}%</SkillLevel>
       </SkillLabel>
-      <MeterBar>
+      <MeterBar $color={color}>
         <Progress
           $width={level}
+          $color={color}
           initial={{ width: 0 }}
           animate={{ width: `${level}%` }}
-          transition={{ duration: 1.5, delay: delay }}
+          transition={{ 
+            duration: 1.5, 
+            delay: delay,
+            type: 'spring',
+            stiffness: 100,
+            damping: 15
+          }}
         >
           <Glow
+            $color={color}
             initial={{ opacity: 0, x: '-100%' }}
             animate={{ opacity: 0.4, x: '100%' }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+            transition={{ 
+              duration: 2.5, 
+              repeat: Infinity, 
+              delay: 0.5,
+              ease: 'linear'
+            }}
           />
         </Progress>
       </MeterBar>

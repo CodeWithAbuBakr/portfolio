@@ -17,11 +17,13 @@ const HeroWrapper = styled.section`
   overflow: hidden;
 
   @media (max-width: 768px) {
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
+    gap: 3rem;
   }
 
   @media (max-width: 480px) {
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
+    gap: 3rem;
   }
 
   &::before {
@@ -134,6 +136,14 @@ const IntroText = styled(motion.div)`
     -webkit-text-fill-color: transparent;
     font-weight: 700;
     letter-spacing: -1px;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
   }
 
   p {
@@ -142,6 +152,14 @@ const IntroText = styled(motion.div)`
     margin-bottom: 2rem;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 300;
+
+    @media (max-width: 768px) {
+      font-size: 0.80rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.80rem;
+    }
   }
 `;
 
