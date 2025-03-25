@@ -1,11 +1,69 @@
+'use client';
+
 import styled from 'styled-components';
 import CyberCard from '../components/CyberCard';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+//Outlook Addin Images (content enhancer)
+import outlook_img_1 from './imgs/outlook addin/11.png';
+import outlook_img_2 from './imgs/outlook addin/22.png';
+import outlook_img_3 from './imgs/outlook addin/33.png';
+import outlook_img_4 from './imgs/outlook addin/44.png';
+import outlook_img_5 from './imgs/outlook addin/55.png';
+
+//Word Addin Images (bartliben)
+import word_img_1 from './imgs/word addin/1.png';
+import word_img_2 from './imgs/word addin/2.png';
+import word_img_3 from './imgs/word addin/3.png';
+import word_img_4 from './imgs/word addin/4.png';
+import word_img_5 from './imgs/word addin/5.png';
+import word_img_6 from './imgs/word addin/6.png';
+import word_img_7 from './imgs/word addin/7.png';
+import word_img_8 from './imgs/word addin/8.png';
+import word_img_9 from './imgs/word addin/9.png';
+import word_img_10 from './imgs/word addin/10.png';
+import word_img_11 from './imgs/word addin/11.png';
+import word_img_12 from './imgs/word addin/12.png';
+import word_img_13 from './imgs/word addin/13.png';
+
+//Excell Addin Images (integraiton of Ketcher into Excel)
+import excell_img_1 from './imgs/Excel addin/1.png';
+import excell_img_2 from './imgs/Excel addin/2.png';
+import excell_img_3 from './imgs/Excel addin/3.png';
+import excell_img_4 from './imgs/Excel addin/4.png';
+import excell_img_5 from './imgs/Excel addin/5.png';
+import excell_img_6 from './imgs/Excel addin/6.png';
+import excell_img_7 from './imgs/Excel addin/7.png';
+
+//Client CRM Dashboard Images 
+import clientCRM_img_1 from './imgs/Client CRM/1.png';
+import clientCRM_img_2 from './imgs/Client CRM/2.png';
+import clientCRM_img_3 from './imgs/Client CRM/3.png';
+import clientCRM_img_4 from './imgs/Client CRM/4.png';
+import clientCRM_img_5 from './imgs/Client CRM/5.png';
+import clientCRM_img_6 from './imgs/Client CRM/6.png';
+import clientCRM_img_7 from './imgs/Client CRM/7.png';
+import clientCRM_img_8 from './imgs/Client CRM/8.png';
+import clientCRM_img_9 from './imgs/Client CRM/9.png';
+import clientCRM_img_10 from './imgs/Client CRM/10.png';
+
+//Powerpoint Addin Images ()
+import powerpoint_img_1 from './imgs/Powerpoint addin/1.png';
+import powerpoint_img_2 from './imgs/Powerpoint addin/2.png';
+import powerpoint_img_3 from './imgs/Powerpoint addin/3.png';
+import powerpoint_img_4 from './imgs/Powerpoint addin/4.png';
+import powerpoint_img_5 from './imgs/Powerpoint addin/5.png';
+
+//Pishing Report Outlook Add-in Images
+import pishingReport_img_1 from './imgs/pushing report/p1.png';
+import pishingReport_img_2 from './imgs/pushing report/p2.png';
+import pishingReport_img_3 from './imgs/pushing report/p3.png';
+import pishingReport_img_4 from './imgs/pushing report/p4.png';
 
 const Section = styled.section`
   position: relative;
-  padding: 6rem 1rem 0rem;
+  padding: 8rem 1rem 0rem;
   background: transparent;
   overflow: hidden;
   
@@ -48,20 +106,29 @@ const CardContainer = styled(motion.div).attrs(() => ({
 const StyledCyberCard = styled(CyberCard)`
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   padding: 1.25rem;
-  background: rgba(10, 25, 47, 0.85) !important;
-  backdrop-filter: blur(12px);
+  background: transparent;
   border: 1px solid rgba(46, 213, 255, 0.15);
   display: flex;
   flex-direction: column;
 
   &:hover {
-    transform: translateY(-5px);
     box-shadow: 0 0 40px ${({ $glowColor }) => $glowColor}80;
+  }
+
+  .content-wrapper {
+    transition: transform 0.3s ease;
+    height: 100%;
+    width: 100%;
+  }
+
+  &:hover .content-wrapper {
+    transform: translateY(-5px); // Move only the content
   }
 
   &::before {
@@ -119,7 +186,8 @@ const StyledCyberCard = styled(CyberCard)`
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.9rem;
     flex-grow: 1;
-  }
+    
+    }
 
   div {
     opacity: ${({ $expanded }) => $expanded ? 1 : 0};
@@ -148,51 +216,6 @@ const StyledCyberCard = styled(CyberCard)`
     }
   }
 `;
-
-const projects = [
-  {
-    id: 1,
-    title: 'Neural Excel Optimizer',
-    description: 'Deep learning-powered spreadsheet analysis with predictive modeling and automated insights generation using TensorFlow integration...',
-    imgLink: '/ai-excel.jpg',
-    glowColor: '#2ed5ff'
-  },
-  {
-    id: 2,
-    title: 'Cognitive Doc Security',
-    description: 'AI-driven document management system with natural language processing and blockchain-based authentication using custom transformer models...',
-    imgLink: '/ai-docs.jpg',
-    glowColor: '#64ffda'
-  },
-  {
-    id: 3,
-    title: 'Smart Presentation AI',
-    description: 'Generative AI assistant for automated slide creation with style transfer capabilities and real-time content suggestions powered by GPT-4...',
-    imgLink: '/ai-slides.jpg',
-    glowColor: '#00ff88'
-  },
-  {
-    id: 4,
-    title: 'Neural Excel Optimizer',
-    description: 'Deep learning-powered spreadsheet analysis with predictive modeling and automated insights generation using TensorFlow integration...',
-    imgLink: '/ai-excel.jpg',
-    glowColor: '#ffd700'
-  },
-  {
-    id: 5,
-    title: 'Cognitive Doc Security',
-    description: 'AI-driven document management system with natural language processing and blockchain-based authentication using custom transformer models...',
-    imgLink: '/ai-docs.jpg',
-    glowColor: '#ff7d45'
-  },
-  {
-    id: 6,
-    title: 'Smart Presentation AI',
-    description: 'Generative AI assistant for automated slide creation with style transfer capabilities and real-time content suggestions powered by GPT-4...',
-    imgLink: '/ai-slides.jpg',
-    glowColor: '#ff7dff'
-  },
-];
 
 
 const Header = styled(motion.h2)`
@@ -235,6 +258,82 @@ const Header = styled(motion.h2)`
 `;
 
 
+const projects = [
+  {
+    id: 1,
+    title: 'IPRHQ Word Add-in',
+    description: 'This Word add-in features login, API-based clause insertion via dropdowns, {{}} search-and-replace, and OpenAI integration for text enhancement, allowing users to refine and insert AI-generated content easily.',
+    imgLink: [word_img_1, word_img_2, word_img_3, word_img_4, word_img_5, word_img_6, word_img_7, word_img_8, word_img_9, word_img_10, word_img_11, word_img_12, word_img_13],
+    glowColor: '#2ed5ff',
+    tech: ['MERN', 'OpenAI', 'Azure AD', 'OAuth2']
+  },
+  {
+    id: 2,
+    title: 'Ketcher Excel Add-in',
+    description: 'This Excel Add-in integrates Ketcher for drawing and editing chemical structures. Users can extract, modify, and auto-update molecular formulas in Excel. Built with React.js and Office.js, it ensures seamless interaction, ideal for chemists and researchers.',
+    imgLink: [excell_img_1, excell_img_2, excell_img_3, excell_img_4, excell_img_5, excell_img_6, excell_img_7],
+    glowColor: '#64ffda',
+    tech: ['React', 'Office.js', 'Ketcher', 'Azure AD', 'OAuth2']
+  },
+  {
+    id: 3,
+    title: 'Client CRM Dashboard',
+    description: 'This MERN-based CRM Dashboard integrates Microsoft 365 APIs for client and email management. Features include role-based authentication, SSO, CSV import, email fetching, search, pagination, and secure backend encryption. Manage invites, clients, and workflows efficiently.',
+    imgLink: [clientCRM_img_1, clientCRM_img_2, clientCRM_img_3, clientCRM_img_4, clientCRM_img_5, clientCRM_img_6, clientCRM_img_7, clientCRM_img_8, clientCRM_img_9, clientCRM_img_10],
+    glowColor: '#00ff88',
+    tech: ['MERN', 'Microsoft 365 API', 'OAuth2', 'Azure AD', 'JWT', 'Bcrypt']
+  },
+  {
+    id: 4,
+    title: 'Content Enhancer AI',
+    description: 'I created an Outlook Enhancer Add-in that improves emails with grammar correction, spelling fixes, and text summarization. It seamlessly integrates with Outlook, ensuring clear, error-free communication while saving time. Perfect for professionals!',
+    imgLink: [outlook_img_1, outlook_img_2, outlook_img_3, outlook_img_4, outlook_img_5],
+    glowColor: '#ffd700',
+    tech: ['React', 'Office.js', 'Azure AD', 'OAuth2', 'Grammarly API', 'OpenAI' ]
+  },
+  {
+    id: 5,
+    title: 'Design Toolkit',
+    description: 'The Interactive Design Toolkit is a PowerPoint add-in for effortless slide customization. It features a shape selector, line adjuster, style customizer, and color picker. Built with React, it ensures real-time updates and smooth interactivity for pro presentations.',
+    imgLink: [powerpoint_img_1, powerpoint_img_2, powerpoint_img_3, powerpoint_img_4, powerpoint_img_5],
+    glowColor: '#ff7d45',
+    tech: ['React', 'Office.js', 'Azure AD', 'OAuth2', 'PPTXGenJS' ]
+  },
+  {
+    id: 6,
+    title: 'Phishing Report',
+    description: 'Built an Outlook Add-In with React.js, Office.js, and Microsoft Graph API for phishing detection. Integrated SSO with Azure AD, used Google Safe Browsing API to analyze emails, enabled silent token refresh, and provided real-time feedback with a secure backend.',
+    imgLink: [pishingReport_img_1, pishingReport_img_2, pishingReport_img_3, pishingReport_img_4],
+    glowColor: '#ff7dff',
+    tech: ['React', 'Office.js', 'Azure AD', 'OAuth2', 'Microsoft Graph API', 'Google Safe Browsing API' ]
+  },
+];
+
+
+
+
+// Projects.jsx - Updated Usage
+const StyledCyberCardComponent = ({ project, expandedIndex, index }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex(prev => (prev + 1) % project.imgLink.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [project.imgLink.length]);
+
+  return (
+    <StyledCyberCard 
+      title={project.title}
+      glowColor={project.glowColor}
+      image={project.imgLink[currentImageIndex]}
+      description={project.description}
+      techItems={project.tech}
+      $expanded={expandedIndex === index}
+    />
+  );
+};
 
 
 export default function Projects() {
@@ -264,25 +363,10 @@ export default function Projects() {
             layout
             $expanded={expandedIndex === index}
           >
-            <StyledCyberCard 
-              title={project.title}
-              glowColor={project.glowColor}
-              $expanded={expandedIndex === index}
-            >
-              <img 
-                src={project.imgLink} 
-                alt={project.title}
-                loading="lazy"
-                onError={(e) => e.target.src = '/ai-fallback.jpg'}
-              />
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div>
-                <span key="tensorflow">TensorFlow</span>
-                <span key="gpt4">GPT-4</span>
-                <span key="blockchain">Blockchain</span>
-              </div>
-            </StyledCyberCard>
+            <StyledCyberCardComponent 
+              project={project}
+              expandedIndex={expandedIndex}
+              index={index} />
           </CardContainer>
         ))}
       </Grid>

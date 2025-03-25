@@ -1,15 +1,18 @@
+'use client';
+
 import styled from 'styled-components';
 import CyberButton from '../components/CyberButton';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const Form = styled(motion.form)`
+  font-family: 'Orbitron', sans-serif;
   width: 90%;
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
   position: relative;
-  background: rgba(10, 10, 30, 0.95);
+  background: transparent;
   border: 1px solid rgba(106, 0, 255, 0.4);
   border-radius: 8px;
   box-shadow: 0 0 30px rgba(106, 0, 255, 0.2);
@@ -32,6 +35,7 @@ const Form = styled(motion.form)`
 `;
 
 const Input = styled(motion.input)`
+  font-family: 'Orbitron', sans-serif;
   width: 100%;
   padding: 1rem;
   margin: 1rem 0;
@@ -56,6 +60,7 @@ const Input = styled(motion.input)`
 `;
 
 const TextArea = styled(Input).attrs({ as: 'textarea' })`
+  font-family: 'Orbitron', sans-serif;
   min-height: 120px;
   resize: vertical;
   padding: 1.2rem;
@@ -83,6 +88,7 @@ const TextArea = styled(Input).attrs({ as: 'textarea' })`
 `;
 
 const StatusIndicator = styled.div`
+  font-family: 'Orbitron', sans-serif;
   position: absolute;
   top: 15px;
   right: 15px;
@@ -168,7 +174,7 @@ export default function Contact() {
       id='contact'
       style={{
         padding: '8rem 1rem 0rem',
-        background: 'radial-gradient(circle at center, #0a0a2e, #000)',
+        background: 'transparent',
         minHeight: '100vh'
       }}
     >

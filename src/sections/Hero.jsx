@@ -1,11 +1,13 @@
 // sections/Hero.jsx
+'use client';
+
 import styled from 'styled-components';
 import CyberButton from '../components/CyberButton';
 import { motion } from 'framer-motion';
 import ProfileImgUrl from './imgs/mabubakrprofilepic.jpeg';
 
 const HeroWrapper = styled.section`
-  padding: 8rem 2rem 0rem;
+  padding: 8rem 1rem 0rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,6 +132,7 @@ const IntroText = styled(motion.div)`
   max-width: 600px;
   h1 {
     font-size: 3rem;
+    font-family: 'Orbitron', sans-serif;  
     margin-bottom: 1.5rem;
     background: linear-gradient(45deg, #00ffff, #00ff88);
     -webkit-background-clip: text;
@@ -177,7 +180,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            I Am Office Addin Developer
+            I am an Office Addin Developer
           </motion.h1>
           
           <p>

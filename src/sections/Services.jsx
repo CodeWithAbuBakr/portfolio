@@ -1,3 +1,5 @@
+'use client';
+
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import ExcelLogo from './imgs/Excel.png';
@@ -162,7 +164,7 @@ const AINode = styled.div`
 
 const AITitle = styled.h3`
   color: ${props => props.color};
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Orbitron', sans-serif;
   font-size: 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -216,7 +218,7 @@ const Header = styled(motion.h2)`
   }
 `;
 
-const OfficeSuiteDisplay = () => {
+const Services = () => {
   const apps = [
     {
       logo: OutlookLogo,
@@ -301,13 +303,13 @@ const OfficeSuiteDisplay = () => {
   ];
 
   return (
-    <Section id='types'>
+    <Section id='services'>
       <Header
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <span>ADD-IN TYPES</span>
+        <span>MY SERVICES</span>
       </Header>
       <CardGrid>
         {apps.map((app, index) => (
@@ -329,4 +331,4 @@ const OfficeSuiteDisplay = () => {
   );
 };
 
-export default OfficeSuiteDisplay;
+export default Services;

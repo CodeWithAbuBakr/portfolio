@@ -1,4 +1,6 @@
 // components/Navbar.jsx
+'use client';
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
@@ -139,7 +141,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'types', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'services', 'skills', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -179,13 +181,13 @@ export default function Navbar() {
             Home
           </NavLink>
           <NavLink
-            to="types"
+            to="services"
             spy={true}
             smooth={true}
             duration={500}
-            className={activeSection === 'types' ? 'active' : ''}
+            className={activeSection === 'services' ? 'active' : ''}
           >
-            Types
+            Services
           </NavLink>
           
           <NavLink
@@ -246,13 +248,13 @@ export default function Navbar() {
             Home
           </NavLink>
           <NavLink
-            to="types"
+            to="services"
             spy={true}
             smooth={true}
             duration={500}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Types
+            Services
           </NavLink>
           <NavLink
             to="projects"

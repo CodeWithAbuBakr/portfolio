@@ -12,7 +12,6 @@ const CardWrapper = styled(motion.div)`
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
-  cursor: pointer;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -20,6 +19,7 @@ const CardWrapper = styled(motion.div)`
   &:hover {
     border: 1px solid ${({ $glowColor }) => $glowColor};
     box-shadow: 0 0 25px ${({ $glowColor }) => `${$glowColor}30`};
+    transform: translateY(-5px);
   }
 `;
 
@@ -73,9 +73,10 @@ const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
-
 `;
 
 export default function CyberCard({ 
@@ -108,9 +109,28 @@ export default function CyberCard({
         }}
       />
 
-{image && (
+      {image && (
         <ImageContainer>
-          <img src={image} alt={title} />
+          <AnimatePresence mode='sync' initial={false}>
+            <motion.img
+              key={image}
+              src={image}
+              alt={title}
+              initial={{ x: '100%', opacity: 0 }}
+              animate={{ x: '0%', opacity: 1 }}
+              exit={{ x: '-100%', opacity: 0 }}
+              transition={{ 
+                duration: 0.5,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+            />
+          </AnimatePresence>
         </ImageContainer>
       )}
 
@@ -118,20 +138,25 @@ export default function CyberCard({
       
       {description && (
         <Description>
-          {description}
+          {description.props.children}
         </Description>
       )}
 
       {techItems && (
         <TechStack>
-          {techItems.map((tech, index) => (
-            <TechTag 
-              key={`tech-${index}`}
-              $glowColor={glowColor}
-            >
-              {tech}
-            </TechTag>
-          ))}
+          {React.Children.map(techItems.props.children, (tech, index) => {
+            const key = tech.key || `tech-${index}`;
+            const content = React.isValidElement(tech) ? tech.props.children : tech;
+            
+            return (
+              <TechTag 
+                key={key}
+                $glowColor={glowColor}
+              >
+                {content}
+              </TechTag>
+            );
+          })}
         </TechStack>
       )}
     </CardWrapper>

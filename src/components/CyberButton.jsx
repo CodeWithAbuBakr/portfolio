@@ -1,6 +1,9 @@
+'use client';
+
 import styled from 'styled-components';
 
 const CyberButton = styled.button`
+  font-family: 'Orbitron', sans-serif;
   background: transparent;
   border: 2px solid transparent;
   border-radius: 4px;
